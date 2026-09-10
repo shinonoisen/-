@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071a33">
+<title>神通川線 のりかえ案内</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --navy:#071a33;--navy2:#0d2a4d;--blue:#1261d8;--blue2:#0b4bb0;
+  --green:#15966b;--green-bg:#eaf8f2;--red:#d93645;--gold:#c8a25c;
+  --ink:#17263b;--muted:#718096;--line:#dfe6ef;--paper:#f5f7fa;--white:#fff;
+  --shadow:0 10px 30px rgba(16,40,72,.08)
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Noto Sans JP","Yu Gothic",sans-serif;letter-spacing:.01em}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{background:linear-gradient(120deg,var(--navy),#0b2443 70%,#12365c);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar-inner{max-width:1180px;margin:auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:12px;background:#fff;display:grid;place-items:center;font-weight:900;font-size:21px;overflow:hidden;border:1px solid var(--gold);box-shadow:0 5px 18px #0004}.logo img{width:100%;height:100%;object-fit:contain}.brand h1{font-size:20px;margin:0;font-weight:850}.brand p{font-size:10px;color:#b8c6d8;margin:3px 0 0}.nav{display:flex;gap:8px}.nav button{border:0;background:transparent;color:#dce7f5;padding:9px 11px;border-radius:9px;font-weight:700;font-size:13px}.nav button:hover{background:#ffffff12}
+.wrap{max-width:1180px;margin:auto;padding:20px}
+.searchbox{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px #10284812;overflow:hidden}
+.search-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 20px}.search-tab{border:0;background:none;padding:15px 18px 12px;color:#68768a;font-weight:800;border-bottom:3px solid transparent}.search-tab.active{color:var(--blue);border-color:var(--blue)}
+.search-main{padding:18px 20px 20px}.station-row{display:grid;grid-template-columns:1fr 46px 1fr;gap:10px;align-items:end}.field label{display:block;font-size:11px;color:#7c899b;font-weight:800;margin:0 0 7px}.fieldbox{height:51px;border:1px solid #d5deea;border-radius:11px;background:#fbfcfe;display:flex;align-items:center;padding:0 14px;gap:10px}.fieldbox:focus-within{border-color:#76a1e8;box-shadow:0 0 0 4px #1261d812}.fieldbox select,.fieldbox input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-size:16px;font-weight:700}.swap{width:42px;height:42px;border-radius:50%;border:1px solid #d5deea;background:#fff;color:#34557c;font-size:20px;box-shadow:0 4px 10px #142a4410}.swap:hover{transform:rotate(180deg);transition:.25s}
+.options{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr auto;gap:10px;margin-top:13px}.mini{height:44px;border:1px solid #d7e0ea;border-radius:10px;background:#fff;padding:0 12px;display:flex;align-items:center;gap:8px;color:#46566d;font-weight:700;font-size:13px}.mini input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-weight:700}.seg{display:flex;border:1px solid #d7e0ea;border-radius:10px;overflow:hidden;background:#f8fafc}.seg button{flex:1;border:0;background:transparent;color:#607087;font-weight:800;font-size:12px}.seg button.active{background:#edf4ff;color:var(--blue)}.searchbtn{border:0;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-weight:850;padding:0 24px;box-shadow:0 8px 18px #1261d82e}.searchbtn:active{transform:translateY(1px)}
+.chips{display:flex;gap:8px;overflow:auto;margin:16px 0 14px}.chip{white-space:nowrap;border:1px solid #d9e2ec;background:#fff;border-radius:999px;padding:9px 14px;color:#5c6c82;font-size:12px;font-weight:800}.chip.active{background:#0b2b50;color:#fff;border-color:#0b2b50}.status{background:#eef9f4;border:1px solid #ccecdf;color:#16845f;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:750}
+.content{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:10px 0 11px}.section-head h2{margin:0;font-size:20px}.count{font-size:12px;color:#7a8798}
+.route-card{background:#fff;border:1px solid var(--line);border-radius:15px;margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden;transition:.18s}.route-card:hover{transform:translateY(-1px);box-shadow:0 14px 34px #10284813}.route-top{padding:16px 18px 12px;display:flex;justify-content:space-between;gap:12px}.rank{display:inline-flex;width:23px;height:23px;border-radius:6px;background:#125bc5;color:#fff;align-items:center;justify-content:center;font-weight:900;font-size:12px;margin-right:7px}.tag{display:inline-block;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900;margin-left:4px}.tag.green{background:var(--green-bg);color:#11835e}.tag.blue{background:#edf4ff;color:#2368c8}.tag.gold{background:#fff7e7;color:#987022}.timebig{font-size:24px;font-weight:900;letter-spacing:.01em}.meta{font-size:12px;color:#738095;margin-top:5px}.fare{text-align:right}.fare strong{font-size:18px}.fare span{display:block;font-size:11px;color:#8b96a5;margin-top:3px}.timeline{margin:0 18px 16px;border:1px solid #e1e7ee;border-radius:11px;padding:13px 13px 11px}.stop{display:grid;grid-template-columns:56px 20px 1fr auto;gap:9px;align-items:center;min-height:52px}.stop+.stop{border-top:1px solid #eef1f5}.stop-time{font-weight:900}.rail{position:relative;height:100%;min-height:38px}.rail:before{content:"";position:absolute;left:8px;top:-1px;bottom:-1px;width:3px;background:var(--green)}.dot{position:absolute;left:3px;top:50%;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--green);transform:translateY(-50%)}.stop:first-child .dot{background:var(--green)}.stop:last-child .dot{background:var(--green)}.stop-name{font-weight:850}.stop-sub{font-size:11px;color:#77859a;margin-top:3px}.duration{border:1px solid #bfe7d7;color:#14835f;background:#f1fbf7;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:900}.card-bottom{padding:10px 18px;border-top:1px solid #eef1f5;display:flex;justify-content:space-between;color:#65748a;font-size:12px}.details{border:0;background:transparent;color:var(--blue);font-weight:850}
+.sidebar{display:flex;flex-direction:column;gap:12px}.side{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;box-shadow:var(--shadow)}.side h3{font-size:14px;margin:0 0 12px}.summary{display:grid;gap:10px}.summary div{display:flex;justify-content:space-between;border-bottom:1px solid #eef1f5;padding-bottom:9px;font-size:12px}.summary div:last-child{border:0;padding:0}.summary b{font-size:13px}.ok{background:#eef9f4;border:1px solid #ccecdf;border-radius:9px;padding:11px;color:#16845f;font-size:12px;font-weight:800}.sidebtn{width:100%;height:40px;border:1px solid #d9e1eb;background:#fff;border-radius:9px;color:#45566e;font-weight:800;margin-top:8px}.line-map{display:flex;align-items:center;gap:0;overflow:auto;padding:5px 0}.station-dot{flex:0 0 auto;text-align:center;font-size:10px;color:#64738a}.station-dot i{display:block;width:10px;height:10px;border:2px solid #54759b;border-radius:50%;background:#fff;margin:0 auto 5px}.station-dot.active{color:var(--blue);font-weight:900}.station-dot.active i{border-color:var(--blue);background:var(--blue)}.mapline{width:32px;height:2px;background:#b9c5d4;flex:0 0 auto}
+.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow)}.table-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.table-head h2{margin:0;font-size:19px}.table-actions{display:flex;gap:7px}.table-btn{border:1px solid #d8e0ea;background:#fff;border-radius:8px;padding:8px 12px;font-weight:800;color:#596a80}.table-btn.active{background:#125bc5;color:#fff;border-color:#125bc5}.table-wrap{overflow:auto;margin-top:13px;border:1px solid var(--line);border-radius:10px}table{border-collapse:separate;border-spacing:0;min-width:1050px;width:100%;font-size:12px;background:#fff}th,td{padding:9px 8px;border-right:1px solid #e7ebf0;border-bottom:1px solid #e7ebf0;text-align:center;white-space:nowrap}thead th{background:#f4f7fa;color:#5c6b80;position:sticky;top:0;z-index:2}thead th:first-child,tbody td:first-child{position:sticky;left:0;z-index:3;background:#fff;text-align:left;font-weight:850}thead th:first-child{background:#f1f4f8}.rapid-text{color:#1261c8;font-weight:900}.local-text{color:#16825e;font-weight:900}.empty{color:#c7ced8}.note{margin-top:14px;background:#f1f4f7;border:1px solid #e0e6ed;color:#728096;padding:11px 13px;border-radius:9px;font-size:11px}
+footer{max-width:1180px;margin:0 auto;padding:0 20px 35px;color:#8995a6;font-size:11px}.footer-line{height:1px;background:#dfe5ec;margin:8px 0 14px}.hide{display:none!important}
+@media(max-width:900px){.content{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr}.options{grid-template-columns:1fr 1fr 1fr}.searchbtn{min-height:44px}.status{grid-column:1/-1}}
+@media(max-width:650px){.topbar-inner{padding:13px 14px}.brand h1{font-size:17px}.brand p{display:none}.logo{width:40px;height:40px;font-size:19px}.nav button{display:none}.wrap{padding:12px}.search-main{padding:13px}.station-row{grid-template-columns:1fr;gap:7px}.swap{position:absolute;right:25px;margin-top:-37px}.options{grid-template-columns:1fr 1fr}.searchbtn{grid-column:1/-1}.content{gap:10px}.sidebar{display:block}.side{margin-bottom:10px}.route-top{padding:13px 14px 10px}.timeline{margin:0 14px 13px;padding:10px}.card-bottom{padding:9px 14px}.timebig{font-size:21px}.fare strong{font-size:16px}.section-head{margin-top:6px}.section-head h2{font-size:17px}.chips{margin:12px 0}.panel{padding:13px}.stop{grid-template-columns:49px 17px 1fr auto}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><div class="logo"><img src="logo.png" alt="ロゴ"></div><div><h1>神通川線 のりかえ案内</h1><p>神通急行の路線・運賃をもとにした乗換検索デモ</p></div></div>
+    <nav class="nav"><button onclick="alert('現在はデモ用の運行情報です。')">ⓘ 運行情報</button><button onclick="alert('出発駅・到着駅と日時を選んで検索してください。')">? 使い方</button></nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="searchbox">
+  <div class="search-main">
+    <div class="station-row">
+      <div class="field"><label>出発駅</label><div class="fieldbox"><span></span><select id="from"></select></div></div>
+      <button class="swap" onclick="swapStations()" aria-label="駅を入れ替え"></button>
+      <div class="field"><label>到着駅</label><div class="fieldbox"><span></span><select id="to"></select></div></div>
+    </div>
+    <div class="options">
+      <label class="mini"><input id="date" type="date" value="2026-09-10"></label>
+      <label class="mini">◷ <input id="time" type="time" value="22:51"></label>
+      <div class="seg"><button id="departMode" class="active" onclick="setMode('depart')">出発</button><button id="arriveMode" onclick="setMode('arrive')">到着</button></div>
+      <div class="seg"><button class="active">始発</button><button onclick="alert('終電検索はこのデモでは通常検索と同じ結果を表示します。')">終電</button></div>
+      <button class="searchbtn" onclick="searchRoute()">経路を検索</button>
+    </div>
+  </div>
+</section>
+
+<div class="chips">
+  <button class="chip active">おすすめ</button>
+</div>
+<div class="status"> 平常運転　現在、運転見合わせや遅延情報はありません（デモ表示）</div>
+
+<div class="content">
+  <div>
+    <div class="section-head"><h2 id="resultTitle">西安野屋 → 磯部堤</h2><span class="count" id="resultCount">検索結果</span></div>
+    <section id="routePanel"></section>
+  </div>
+  <aside class="sidebar">
+    <div class="side"><h3>経路の概要</h3><div class="summary"><div><span>出発</span><b id="sideFrom">西安野屋</b></div><div><span>到着</span><b id="sideTo">磯部堤</b></div><div><span>所要時間</span><b id="sideDuration">—</b></div><div><span>乗換</span><b>0回</b></div><div><span>運賃</span><b id="sideFare">100円</b></div></div></div>
+    <div class="side"><h3>定期運賃</h3><div style="font-size:11px;color:#718097;margin-bottom:2px">神通急行</div><table class="pass-table"><thead><tr><th>種別</th><th>1ヶ月</th><th>3ヶ月</th><th>6ヶ月</th></tr></thead><tbody><tr><td>通勤</td><td>3,000円</td><td>8,550円</td><td>16,200円</td></tr><tr><td>通学</td><td>2,100円</td><td>5,980円</td><td>11,340円</td></tr></tbody></table><div class="pass-note">※ 定期運賃は神通急行の設定額です。</div></div>
+    <div class="side"><h3>運行情報</h3><div class="ok">✓ 平常運転<br><span style="font-weight:600">神通川線は通常どおり運行しています。</span></div><button class="sidebtn" onclick="alert('デモ用の運行情報です。')">路線の運行情報を見る　›</button></div>
+    <div class="side"><h3>神通川線 路線図</h3><div class="line-map" id="lineMap"></div></div>
+    <div class="side"><h3>便利な機能</h3><button class="sidebtn" onclick="shareRoute()">この経路を共有　↗</button><button class="sidebtn" onclick="window.print()">印刷する　▣</button></div>
+  </aside>
+</div>
+<div class="note">※ スクリーンショット8枚（下り4枚・上り4枚）をもとにしたデモ用データです。実際の運行情報・遅延・臨時変更・運賃は神通急行の距離別運賃表・定期運賃を反映しています。</div>
+</main>
+<footer><div class="footer-line"></div>神通川線 のりかえ案内 DEMO　｜　使い方　｜　免責事項　｜　お問い合わせ</footer>
+
+<script>
+const stationsDown=["本芝園","西安野屋","松川","磯部堤","布瀬公園","神通川緑地","本布瀬","布瀬本町"];
+const stationsUp=[...stationsDown].reverse();
+// 駅間距離（画像の表示値）：本芝園→西安野屋→…→布瀬本町
+const stationDistances=[0,0.3,0.6,1.0,1.3,1.7,2.1,2.3];
+function calcFare(distance){if(distance<=3)return 100;if(distance<=5)return 120;if(distance<=7)return 140;if(distance<=11)return 160;return 160}
+function calcICFare(fare){return Math.round(fare*0.92)}
+function calcDistance(from,to){const a=stationsDown.indexOf(from),b=stationsDown.indexOf(to);return Math.abs(stationDistances[a]-stationDistances[b])}
+const downTimes=["05:00","06:00","06:15","06:30","06:45","07:00","07:15","07:30","07:45","08:00","08:15","08:30","08:45","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00","18:15","18:30","18:45","19:00","19:15","19:30","19:45","20:00","20:15","20:30","20:45","21:00","21:30","22:00","22:30","23:00","23:30"];
+const downTypes=["快速","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","各駅停車","各駅停車"];
+const upTimes=["05:00","06:00","06:15","06:30","06:45","07:00","07:15","07:30","07:45","08:00","08:15","08:30","08:45","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:20","13:40","14:00","14:30","15:00","15:30","16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00","18:15","18:30","18:45","19:00","19:15","19:30","19:45","20:00","20:30","20:45","21:00","21:30","22:00","22:30","23:00","23:30"];
+const upTypes=["快速","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","各駅停車","快速","快速","各駅停車","快速","各駅停車","快速","各駅停車","各駅停車","各駅停車"];
+function makeTrains(times,types,direction){return times.map((time,i)=>({time,type:types[i],direction,number:"J"+String((direction==="down"?1:2)+i*2).padStart(4,"0")}))}
+const trainsDown=makeTrains(downTimes,downTypes,"down"),trainsUp=makeTrains(upTimes,upTypes,"up");
+function addMin(t,n){const [h,m]=t.split(":").map(Number),d=new Date(2026,0,1,h,m+n);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
+function mins(t){const [h,m]=t.split(":").map(Number);return h*60+m}
+function stopsFor(train,dir){const s=dir==="down"?stationsDown:stationsUp;if(train.type==="快速")return dir==="down"?[0,2,4,6,7]:[0,1,3,5,7];return s.map((_,i)=>i)}
+function trainAtStation(train,dir,stationIndex){const stops=stopsFor(train,dir);if(!stops.includes(stationIndex))return null;const offsets=dir==="down"?[0,1,2,4,6,7,9,10]:[0,1,3,5,6,8,9,10];return addMin(train.time,offsets[stationIndex])}
+function populateStations(){const f=document.getElementById("from"),t=document.getElementById("to");stationsDown.forEach(s=>{f.add(new Option(s,s));t.add(new Option(s,s))});f.value="西安野屋";t.value="磯部堤";renderLineMap()}
+let sortMode="recommend",searchMode="depart";
+function setMode(mode){searchMode=mode;document.getElementById("departMode").classList.toggle("active",mode==="depart");document.getElementById("arriveMode").classList.toggle("active",mode==="arrive");searchRoute()}
+function setSort(mode,el){sortMode=mode;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));el.classList.add('active');searchRoute()}
+function searchRoute(){
+ const from=document.getElementById("from").value,to=document.getElementById("to").value,after=document.getElementById("time").value;
+ document.getElementById("resultTitle").textContent=from+" → "+to;document.getElementById("sideFrom").textContent=from;document.getElementById("sideTo").textContent=to;
+ const fi=stationsDown.indexOf(from),ti=stationsDown.indexOf(to);if(fi===ti){document.getElementById("routePanel").innerHTML='<article class="route-card"><div class="route-top"><b>同じ駅です</b></div><div class="card-bottom">出発駅と到着駅を別の駅にしてください。</div></article>';return}
+ const dir=fi<ti?"down":"up",stations=dir==="down"?stationsDown:stationsUp,trains=dir==="down"?trainsDown:trainsUp,a=stations.indexOf(from),b=stations.indexOf(to);
+ let found=trains.map(tr=>{const dep=trainAtStation(tr,dir,a),arr=trainAtStation(tr,dir,b);return dep&&arr?{tr,dep,arr,duration:mins(arr)-mins(dep)}:null}).filter(Boolean).filter(x=>mins(x.dep)>=mins(after));
+ if(sortMode==='fast')found.sort((a,b)=>a.duration-b.duration||mins(a.dep)-mins(b.dep)); else if(sortMode==='fare')found.sort((a,b)=>mins(a.dep)-mins(b.dep)); else found.sort((a,b)=>mins(a.dep)-mins(b.dep));
+ found=found.slice(0,8);document.getElementById("resultCount").textContent=(dir==="down"?"下り":"上り")+" / "+found.length+"件";
+ if(!found.length){document.getElementById("routePanel").innerHTML='<article class="route-card"><div class="route-top"><b>該当する列車がありません</b></div><div class="card-bottom">時刻を少し早めて検索してみてください。</div></article>';return}
+ const totalDistance=calcDistance(from,to), fare=calcFare(totalDistance), icFare=calcICFare(fare);
+ document.getElementById("sideDuration").textContent=found[0].duration+"分";
+ document.getElementById("sideFare").textContent=fare+"円";
+ document.getElementById("routePanel").innerHTML=found.map((x,i)=>{
+  const cls=x.tr.type==="快速"?'blue':'green',tag=i===0?'おすすめ':(x.tr.type==="快速"?'快速':'各駅停車');
+  // 出発駅〜到着駅の範囲にある「実際に停車する駅」をすべて表示
+  const stopIndexes=stopsFor(x.tr,dir).filter(si=>si>=a&&si<=b);
+  const timeline=stopIndexes.map((si,idx)=>{
+    const station=stations[si], tm=trainAtStation(x.tr,dir,si);
+    const isFirst=idx===0,isLast=idx===stopIndexes.length-1;
+    const sub=isFirst?`${x.tr.type}　乗車`:isLast?'到着':'停車';
+    const segmentMinutes=idx>0?mins(tm)-mins(trainAtStation(x.tr,dir,stopIndexes[idx-1])):null;
+    return `<div class="stop"><div class="stop-time">${tm}</div><div class="rail"><i class="dot"></i></div><div><div class="stop-name">${station}</div><div class="stop-sub">${sub}${segmentMinutes!==null?`　・　前駅から${segmentMinutes}分`:''}</div></div>${isLast?`<span class="duration">${x.duration}分</span>`:'<span></span>'}</div>`;
+  }).join('');
+  const stopNames=stopIndexes.map(si=>stations[si]).join(' → ');
+  return `<article class="route-card"><div class="route-top"><div><div><span class="rank">${i+1}</span><span class="tag ${i===0?'green':cls}">${tag}</span></div><div class="timebig">${x.dep} → ${x.arr} <span style="font-size:13px;font-weight:800">(${x.duration}分)</span></div><div class="meta">乗換 0回　・　神通川線 ${x.tr.number}　・　${dir==='down'?'布瀬本町方面':'本芝園方面'}　・　停車 ${stopIndexes.length}駅</div></div><div class="fare"><strong>${fare}円</strong><span>IC ${icFare}円　${totalDistance.toFixed(1)}km</span></div></div><div class="timeline">${timeline}</div><div class="card-bottom"><span>🚆 ${x.tr.type} / ${dir==='down'?'布瀬本町方面':'本芝園方面'}<br><small style="color:#8a96a6">${stopNames}</small></span><button class="details" onclick="alert('列車 ${x.tr.number}\n${stopNames}')">詳細を見る　›</button></div></article>`
+ }).join("");
+}
+function renderLineMap(){const el=document.getElementById('lineMap');el.innerHTML=stationsDown.map((s,i)=>`<div class="station-dot ${i===1||i===3?'active':''}"><i></i>${s}</div>${i<stationsDown.length-1?'<span class="mapline"></span>':''}`).join('')}
+function swapStations(){const f=document.getElementById('from'),t=document.getElementById('to');[f.value,t.value]=[t.value,f.value];searchRoute()}
+async function shareRoute(){const text=`神通川線 ${document.getElementById('from').value} → ${document.getElementById('to').value}`;try{await navigator.clipboard.writeText(location.href);alert(text+' のページURLをコピーしました。')}catch(e){alert(text+'\nURL: '+location.href)}}
+populateStations();searchRoute();
+</script>
+</body>
+</html>
